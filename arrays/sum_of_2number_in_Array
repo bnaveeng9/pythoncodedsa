@@ -1,0 +1,55 @@
+
+import sys
+import itertools
+import numpy as np 
+
+def sumoftwo(arr, n ):
+    if len(arr) <= 1: 
+        return False
+    
+    for x in range(len(arr)):
+        for y in range(len(arr)):
+            if x+y == n:
+                return True
+    return False
+
+'''
+Two Sum using Sorting and Two-Pointers technique:
+'''
+def TwoSumUsingSortingTwoPointersTechnique(arr, n):
+    
+    r = len(arr) -1
+    l = 0
+    
+    if len(arr) <= 1:
+        return False
+    arr = np.sort(arr)
+    
+    while l < r:
+        if arr[l] + arr[r] == n:
+            return True
+        elif arr[l] + arr[r] < n:
+            l= l+1
+        else:
+            r = r-1
+    return False
+    
+            
+
+def main() -> int:
+    """Echo the input arguments to standard output"""
+    arr = [ -2,1,2,3,4 ]
+    
+    print( sumoftwo(arr,9) ) 
+    
+    print( TwoSumUsingSortingTwoPointersTechnique(arr,9) ) 
+    return 0
+
+
+
+if __name__ == '__main__':
+    sys.exit(main())
+    
+    
+    
+    
