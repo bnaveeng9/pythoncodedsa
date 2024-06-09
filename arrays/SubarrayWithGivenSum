@@ -1,0 +1,64 @@
+
+import sys
+import itertools
+import numpy as np 
+
+def SubarrayWithGivenSum(arr, s):
+    
+    l = 0
+    r = len(arr)
+
+    if len(arr) <= 0:
+        return None
+
+    if arr[0] == s:
+        return (0,0)
+    temp_sum = 0 
+    j = 0
+
+    for i in range(0, r): 
+        temp_sum = arr[i]
+        if temp_sum == s:
+            return (i,0)
+        else:
+            for j in range(i+1, r):
+                temp_sum += arr[j]
+                if temp_sum == s:
+                    return (i,j)
+                
+    return None
+          
+def SubarrayWithGivenSum_slidingwindow(arr, s):
+    
+    start = 0
+    currentSum = 0
+    for i in range(0, len(arr)): 
+        currentSum += arr[i]
+        if currentSum == s:
+            return (start, i)       
+        if currentSum > s:
+            currentSum -= arr[start]
+            start += 1
+        
+    return None
+          
+
+    
+
+
+def main() -> int:
+    """Echo the input arguments to standard output"""
+    arr = [1, 4, 0, 0, 3, 10, 5] 
+    h = SubarrayWithGivenSum(arr, 9)
+    print(h)
+
+    h = SubarrayWithGivenSum_slidingwindow(arr, 9)
+    print(h)
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main())
+    
+    
+    
+    

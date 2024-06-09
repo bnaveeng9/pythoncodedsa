@@ -1,0 +1,40 @@
+
+import sys
+import itertools
+import numpy as np 
+
+'''Find duplicates in O(n) time and O(1) extra space | Set 1'''
+
+
+def FindDuplicatesInArray(arr):
+    
+    hashmap = {}
+    lst = []
+
+    for num in arr:
+        hashmap[ num ] = hashmap.get( num , 0 ) + 1
+    
+    for k, v in hashmap.items():
+        if v > 1:
+            lst.append(k )
+
+    lst.sort()
+    return lst
+         
+    
+
+
+def main() -> int:
+    """Echo the input arguments to standard output"""
+    arr = [1, 2, 3, 6, 3, 6, 1] 
+    h = FindDuplicatesInArray(arr)
+    print(h)
+
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main())
+    
+    
+    
+    

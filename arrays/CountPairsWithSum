@@ -1,0 +1,43 @@
+
+import sys
+import itertools
+import numpy as np 
+
+'''Given an array arr[] of size N-1 with integers in the range of [1, N], the task is to find the missing number from the first N integers.
+
+Note: There are no duplicates in the list.'''
+
+
+def CountPairWithGivenSum(arr, s):
+    
+    L = len(arr)
+    cntPair = 0
+    i =0
+    while i <= L:
+        for j in range(i+1, L):
+            if arr[i] + arr[j] == s:
+                cntPair +=1
+        i +=1
+                
+    return cntPair
+         
+    
+
+
+def main() -> int:
+    """Echo the input arguments to standard output"""
+    arr = [1, 5, 7, -1, 5] 
+    h = CountPairWithGivenSum(arr, 6)
+    print(h)
+
+    arr = [1,1,1,1] 
+    h = CountPairWithGivenSum(arr, 2)
+    print(h)
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main())
+    
+    
+    
+    
